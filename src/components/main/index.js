@@ -22,8 +22,8 @@ class ConnectedMain extends Component{
   }
 
   setData(responseData){
-  console.log(responseData);
-  this.props.setHeroes(responseData)
+  console.log(responseData.data.results);
+  this.props.setHeroes(responseData.data.results)
 }
 
   
