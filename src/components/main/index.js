@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { setHeroes } from "../../actions";
 import { connect } from "react-redux";
+import HeroList from "../heroList"
+
 
 import './style.css'
+
+
+const mapStateToProps = state => {
+  return { heroes: state.heroes,
+            
+          };
+};
 
 const mapDispatchToProps = dispatch => {
  return {
@@ -22,7 +31,8 @@ class ConnectedMain extends Component{
   }
 
   setData(responseData){
-  console.log(responseData.data.results);
+    console.log(this.props.heroes)
+  console.log(responseData.data.results[0]);
   this.props.setHeroes(responseData.data.results)
 }
 
@@ -64,10 +74,11 @@ checkTypingStop(){
     <div>
 
   <input type="search" placeholder="search" onChange={this.checkTypingStop} onKeyDown={this.stopTimer} ref={(a) => this.searchInput = a}/>
+  <HeroList/>
   </div>
   )
  }
 }
 
-const Main=connect(mapDispatchToProps)(ConnectedMain)
+const Main=connect(mapStateToProps,mapDispatchToProps)(ConnectedMain)
 export default Main

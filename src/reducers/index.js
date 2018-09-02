@@ -1,5 +1,5 @@
 const initialState={
-	heroes:[]
+	
 }
 
 const rootReducer=(state=initialState,action)=>{
